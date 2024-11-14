@@ -3,8 +3,81 @@
 # los almacene en una lista y los muestre por pantalla ordenados de menor a mayor.
 
 
+def validar_numero(num: str) -> bool:
+    """
+    Valida que la entrada sea un número tipo entero y esté entre el rango de 1 a 49.
+
+    Args:
+        num (str): El número a validar.
+
+    Returns:
+        bool: True si es número válido, False en caso de no serlo.
+    """
+    try:
+        num = int(num)
+        if num >= 1 and num <= 49:
+            return True
+        else:
+            raise Exception("*ERROR* El número debe estar entre 1 y 49.")
+
+    except ValueError:
+        print("*ERROR* Debe ser un número entero.")
+        return False
+    except Exception as e:
+        print(e)
+        return False
+
+
+def pedir_numero(msj: str) -> int:
+    """
+    Solicita al usuario introducir un número, validando que sea un número entero.
+
+    Args:
+        msj (str): Mensaje que se mostrará al solicitar el número.
+
+    Returns:
+        float: El número introducido, validado y convertido a entero.
+    """
+    num = None
+    while num is None:
+        num = input(msj)
+        if not validar_numero(num):
+            num = None
+        else:
+            return int(num)
+
+
+def crear_lista():
+    """
+    
+    """
+    lista_numeros = []
+
+    for i in range(6):
+        lista_numeros.append(pedir_numero(f"Introduce el número {i} de la loteria (hasta 6): "))
+    return lista_numeros
+
+
+def ordenar_lista(numeros_ganadores):
+    """
+    
+    """
+    return sorted(numeros_ganadores)
+
+
+def mostrar_lista(lista_numeros):
+    """
+    
+    """
+
+    numeros_ordenados = ordenar_lista(lista_numeros)
+
+    return "Los números son:\n" +  f"{' '.join(map(str, numeros_ordenados))}".rstrip()
+
+
 def main():
-    pass
+    lista_numeros = crear_lista()
+    print(mostrar_lista(lista_numeros))
 
 
 if __name__ == "__main__":
