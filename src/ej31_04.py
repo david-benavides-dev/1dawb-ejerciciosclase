@@ -18,10 +18,10 @@ def validar_numero(num: str) -> bool:
         if num >= 1 and num <= 49:
             return True
         else:
-            raise Exception("*ERROR* El número debe estar entre 1 y 49.")
+            raise Exception("\033[31m*ERROR* El número debe estar entre 1 y 49.\033[0m")
 
     except ValueError:
-        print("*ERROR* Debe ser un número entero.")
+        print("\033[31m*ERROR* Debe ser un número entero.\033[0m")
         return False
     except Exception as e:
         print(e)
@@ -54,7 +54,12 @@ def crear_lista():
     lista_numeros = []
 
     for i in range(6):
-        lista_numeros.append(pedir_numero(f"Introduce el número {i} de la loteria (hasta 6): "))
+        if i == 0:
+            lista_numeros.append(pedir_numero(f"Introduce el primer número de la loteria primitiva (hasta 6): "))
+        elif i == 5:
+            lista_numeros.append(pedir_numero(f"Introduce el último número de la loteria primitiva: "))    
+        else:
+            lista_numeros.append(pedir_numero(f"Introduce el {i+1}º número de la loteria primitiva (hasta 6): "))
     return lista_numeros
 
 
