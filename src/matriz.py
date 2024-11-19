@@ -71,16 +71,16 @@ def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> t
     return tuple(matriz_tuplas)
 
 
-def calcular_matriz(vector1: tuple, vector2: tuple) -> tuple:
+def calcular_matriz(matriz1: tuple, matriz2: tuple) -> tuple:
     """
-    Calcula la matriz resultante del producto entre dos vectores dados.
+    Calcula la matriz resultante del producto entre dos matrices dadas
 
     Args:
-        vector1 (tuple): El primer vector.
-        vector2 (tuple): El segundo vector.
+        matriz1 (tuple): La primera matriz
+        matriz2 (tuple): La primera matriz.
 
     Returns:
-        tuple: Una tupla anidada que representa la matriz resultante del producto entre los dos vectores.
+        tuple: Una tupla anidada que representa la matriz resultante del producto entre los dos matrices
     """
     matriz = []
 
@@ -88,14 +88,14 @@ def calcular_matriz(vector1: tuple, vector2: tuple) -> tuple:
     producto2 = 0
 
     try:
-        if not validar_matriz(vector1, vector2):
+        if not validar_matriz(matriz1, matriz2):
             raise ValueError("\033[31m*ERROR* No se puede multiplicar dos matrices si el número de columnas de la primera matriz no coincide con el número de filas de la segunda.\033[0m")
 
         # Fila 1 por columna 1, fila 1 por columna 2
-        for i in range(len(vector1[0])):
-            producto += vector1[0][i] * vector2[i][0]
-        for j in range(len(vector1[0])):
-            producto2 += vector1[0][j] * vector2[j][1]
+        for i in range(len(matriz1[0])):
+            producto += matriz1[0][i] * matriz2[i][0]
+        for i in range(len(matriz1[0])):
+            producto2 += matriz1[0][i] * matriz2[i][1]
 
         matriz.append((producto, producto2))
 
@@ -103,10 +103,10 @@ def calcular_matriz(vector1: tuple, vector2: tuple) -> tuple:
         producto2 = 0
 
         # Fila 2 por columna 1, fila 2 por columna 2
-        for i in range(len(vector2)):
-            producto += vector1[1][i] * vector2[i][0]
-        for j in range(len(vector2)):
-            producto2 += vector1[1][j] * vector2[j][1]
+        for i in range(len(matriz2)):
+            producto += matriz1[1][i] * matriz2[i][0]
+        for i in range(len(matriz2)):
+            producto2 += matriz1[1][i] * matriz2[i][1]
 
         matriz.append((producto, producto2))
 
