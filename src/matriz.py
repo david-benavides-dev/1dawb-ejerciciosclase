@@ -49,6 +49,12 @@ def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> t
     Returns:
         tuple: Tupla anidada que representa la matriz generada.
     """
+    try:
+        if min > max:
+            raise ValueError("\033[31m*ERROR* El mínimo no puede ser mayor que el máximo.\033[0m")
+    except ValueError as e:
+        return str(e)
+
     matriz_generada = []
 
     for j in range(filas):
@@ -105,13 +111,26 @@ def calcular_matriz(vector1: tuple, vector2: tuple) -> tuple:
         matriz.append((producto, producto2))
 
     except ValueError as e:
-        return e
+        return str(e)
 
     return tuple(matriz)
 
 
-def mostrar_matriz():
-    pass
+def mostrar_matriz(matriz: tuple) -> str:
+    """
+    Formatea una tupla pasada por parámetro para dar salto de linea por cada tupla anidada.
+
+    Args:
+        matriz (tuple): La matriz a formatear.
+
+    Returns:
+        str: La matriz formateada junto a un mensaje.
+    """
+    resultado = ""
+    for fila in matriz:
+        resultado += "\n" + f"{fila}"
+
+    return resultado
 
 
 def main():
@@ -133,6 +152,10 @@ def main():
 
     matriz_generada = generar_matriz_aleatoria(3, 5, 5, 10)
     print (matriz_generada)
+
+    print(mostrar_matriz(matriz_generada))
+
+    print(mostrar_matriz(matriz))
 
 
 if __name__ == "__main__":
