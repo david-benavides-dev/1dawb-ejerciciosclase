@@ -1,32 +1,49 @@
+# Ejercicio 3.1.12
+# Escribir un programa que almacene las matrices 
+# matriz 2x3
+# A=  
+#  1, 2, 3
+#  4, 5, 6
+# matriz 3x2
+# B=  
+# −1, 0    
+#  0, 1
+#  1, 1
+# en una lista y muestre por pantalla su producto. El resultado debe ser una matriz de 2x2.
+# Nota: Para representar matrices mediante listas usar listas anidadas, representando cada vector fila en una lista.
+# Prueba ahora con estas matrices
+# El resultado debe ser una matriz de 3x3.
 
 
+def generar_matriz_aleatoria(filas, columnas, min, max):
+    pass
 
 
-def generar_matriz(a: tuple, b: tuple) -> tuple:
+def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
     """
     
     """
     matriz = []
+    sumatoria = 0
+    sumatoria2 = 0
 
-    producto_suma = 0
+    for i in range(len(vector1[0])):
+        sumatoria += vector1[0][i] * vector2[i][0]
+    for j in range(len(vector1[0])):
+        sumatoria2 += vector1[0][j] * vector2[j][1]
 
-    long_a = len(a[1])
-    long_b = len(b)
+    matriz.append((sumatoria, sumatoria2))
 
+    sumatoria = 0
+    sumatoria2 = 0
 
-    for i in range(long_a):
-        
-        for j in range(long_b):
-            
+    for i in range(len(vector1[0])):
+        sumatoria += vector1[1][i] * vector2[i][0]
+    for j in range(len(vector1[0])):
+        sumatoria2 += vector1[1][j] * vector2[j][1]
 
-
-
-    # for i in range(len(a[0])):
-    #     for j in range(len(b)):
-    #         producto_suma = a[j-1][i] * b[i][j-1]
-    #         matriz.append(producto_suma)
-
-    # return matriz
+    matriz.append((sumatoria, sumatoria2))
+    return tuple(matriz)
 
 
 def main():
@@ -45,17 +62,9 @@ def main():
         )
 
 
-    long_a = len(a[1])
-    long_b = len(b)
-
-    print(long_a)
-    print(long_b)
+    matriz = generar_matriz(a, b)
+    print(matriz)
 
 
 if __name__ == "__main__":
     main()
-
-
-# generar_matriz_aleatoria(filas, columnas, min, max)
-
-#5, 14 8, 32
