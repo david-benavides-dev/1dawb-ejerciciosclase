@@ -38,7 +38,7 @@ def validar_matriz(v1: tuple, v2: tuple) -> bool:
 
 def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> tuple:
     """
-    Genera una matriz aleatoria dependiendo de los valores y las dimensiones especificadas.
+    Genera una matriz de números aleatorios con las dimensiones y el rango de valores especificados por parámetros.
 
     Args:
         filas (int): El número de filas de la matriz.
