@@ -10,9 +10,6 @@
 #  0, 1
 #  1, 1
 # en una lista y muestre por pantalla su producto. El resultado debe ser una matriz de 2x2.
-# Nota: Para representar matrices mediante listas usar listas anidadas, representando cada vector fila en una lista.
-# Prueba ahora con estas matrices
-# El resultado debe ser una matriz de 3x3.
 
 
 def validar_entrada():
@@ -49,25 +46,25 @@ def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
     """
     matriz = []
 
-    sumatoria = 0
-    sumatoria2 = 0
+    producto = 0
+    producto2 = 0
 
     for i in range(len(vector1[0])):
-        sumatoria += vector1[0][i] * vector2[i][0]
+        producto += vector1[0][i] * vector2[i][0]
     for j in range(len(vector1[0])):
-        sumatoria2 += vector1[0][j] * vector2[j][1]
+        producto2 += vector1[0][j] * vector2[j][1]
 
-    matriz.append((sumatoria, sumatoria2))
+    matriz.append((producto, producto2))
 
-    sumatoria = 0
-    sumatoria2 = 0
+    producto = 0
+    producto2 = 0
 
     for i in range(len(vector1[0])):
-        sumatoria += vector1[1][i] * vector2[i][0]
+        producto += vector1[1][i] * vector2[i][0]
     for j in range(len(vector1[0])):
-        sumatoria2 += vector1[1][j] * vector2[j][1]
+        producto2 += vector1[1][j] * vector2[j][1]
 
-    matriz.append((sumatoria, sumatoria2))
+    matriz.append((producto, producto2))
 
     return tuple(matriz)
 
