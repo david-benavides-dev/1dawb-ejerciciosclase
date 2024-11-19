@@ -11,13 +11,11 @@
 #  1, 1
 # en una lista y muestre por pantalla su producto. El resultado debe ser una matriz de 2x2.
 
-
 # def validar_entrada():
 #     pass
-
-
 # def pedir_numero():
 #     pass
+import random
 
 
 def validar_matriz(v1: tuple, v2: tuple) -> bool:
@@ -32,7 +30,7 @@ def validar_matriz(v1: tuple, v2: tuple) -> bool:
     Returns:
         bool: True si es posible la multiplicación, False en caso de no serlo.
     """
-    if len(v1[0]) > len(v2):
+    if len(v1[0]) != len(v2):
         return False
     else:
         return True
@@ -53,10 +51,21 @@ def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> t
     """
     matriz_generada = []
 
-    return tuple(matriz_generada)
+    for j in range(filas):
+        matriz_generada.append([])
+        for _ in range(columnas):
+            numero_generado = random.randint(min, max)
+            matriz_generada[j].append(numero_generado)
+
+    matriz_tuplas = []
+
+    for fila in matriz_generada:
+        matriz_tuplas.append(tuple(fila))
+
+    return tuple(matriz_tuplas)
 
 
-def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
+def calcular_matriz(vector1: tuple, vector2: tuple) -> tuple:
     """
     Calcula la matriz resultante del producto entre dos vectores dados.
 
@@ -119,8 +128,11 @@ def main():
         )
 
 
-    matriz = generar_matriz(a, b)
+    matriz = calcular_matriz(a, b)
     print(matriz)
+
+    matriz_generada = generar_matriz_aleatoria(3, 5, 5, 10)
+    print (matriz_generada)
 
 
 if __name__ == "__main__":
