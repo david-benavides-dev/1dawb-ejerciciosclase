@@ -12,30 +12,48 @@
 # en una lista y muestre por pantalla su producto. El resultado debe ser una matriz de 2x2.
 
 
-def validar_entrada():
-    pass
+# def validar_entrada():
+#     pass
 
 
-def pedir_numero():
-    pass
+# def pedir_numero():
+#     pass
 
 
-def mostrar_matriz():
-    pass
-
-
-def validar_matriz():
+def validar_matriz(v1: tuple, v2: tuple) -> bool:
     """
-    
+    Valida si dos matrices pueden multiplicarse.
+    No se puede multiplicar dos matrices cuando el número de columnas de la primera matriz no coincide con el número de filas de la segunda matriz.
+
+    Args:
+        v1 (tuple): La primera matriz
+        v2 (tuple): La segunda matriz
+
+    Returns:
+        bool: True si es posible la multiplicación, False en caso de no serlo.
     """
-    pass
+    if len(v1[0]) > len(v2):
+        return False
+    else:
+        return True
 
 
 def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> tuple:
     """
-    
+    Genera una matriz aleatoria dependiendo de los valores y las dimensiones especificadas.
+
+    Args:
+        filas (int): El número de filas de la matriz.
+        columnas (int): El número de columnas de la matriz.
+        min (int): El valor mínimo de cada número
+        max (int): El valor máximo de cada número
+
+    Returns:
+        tuple: Tupla anidada que representa la matriz generada.
     """
-    pass
+    matriz_generada = []
+
+    return tuple(matriz_generada)
 
 
 def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
@@ -54,26 +72,37 @@ def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
     producto = 0
     producto2 = 0
 
-    # Fila 1 por columna 1, fila 1 por columna 2
-    for i in range(len(vector1[0])):
-        producto += vector1[0][i] * vector2[i][0]
-    for j in range(len(vector1[0])):
-        producto2 += vector1[0][j] * vector2[j][1]
+    try:
+        if not validar_matriz(vector1, vector2):
+            raise ValueError("\033[31m*ERROR* No se puede multiplicar dos matrices si el número de columnas de la primera matriz no coincide con el número de filas de la segunda.\033[0m")
 
-    matriz.append((producto, producto2))
+        # Fila 1 por columna 1, fila 1 por columna 2
+        for i in range(len(vector1[0])):
+            producto += vector1[0][i] * vector2[i][0]
+        for j in range(len(vector1[0])):
+            producto2 += vector1[0][j] * vector2[j][1]
 
-    producto = 0
-    producto2 = 0
+        matriz.append((producto, producto2))
 
-    # Fila 2 por columna 1, fila 2 por columna 2
-    for i in range(len(vector1[0])):
-        producto += vector1[1][i] * vector2[i][0]
-    for j in range(len(vector1[0])):
-        producto2 += vector1[1][j] * vector2[j][1]
+        producto = 0
+        producto2 = 0
 
-    matriz.append((producto, producto2))
+        # Fila 2 por columna 1, fila 2 por columna 2
+        for i in range(len(vector2)):
+            producto += vector1[1][i] * vector2[i][0]
+        for j in range(len(vector2)):
+            producto2 += vector1[1][j] * vector2[j][1]
+
+        matriz.append((producto, producto2))
+
+    except ValueError as e:
+        return e
 
     return tuple(matriz)
+
+
+def mostrar_matriz():
+    pass
 
 
 def main():
