@@ -15,15 +15,40 @@
 # El resultado debe ser una matriz de 3x3.
 
 
-def generar_matriz_aleatoria(filas, columnas, min, max):
+def validar_entrada():
+    pass
+
+
+def pedir_numero():
+    pass
+
+
+def mostrar_matriz():
+    pass
+
+
+def validar_matriz():
+    """
+    
+    """
+    pass
+
+
+def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> tuple:
+    """
+    
+    """
     pass
 
 
 def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
+    # Fila 1 por columna 1, fila 1 por columna 2
+    # Fila 2 por columna 1, fila 2 por columna 2
     """
     
     """
     matriz = []
+
     sumatoria = 0
     sumatoria2 = 0
 
@@ -43,12 +68,11 @@ def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
         sumatoria2 += vector1[1][j] * vector2[j][1]
 
     matriz.append((sumatoria, sumatoria2))
+
     return tuple(matriz)
 
 
 def main():
-    # Fila 1 por columna 1, fila 1 por columna 2
-    # Fila 2 por columna 1, fila 2 por columna 2
     a = (
         (1, 2, 3),
         (4, 5, 6)
