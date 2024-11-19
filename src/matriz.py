@@ -39,16 +39,22 @@ def generar_matriz_aleatoria(filas: int, columnas: int, min: int, max: int) -> t
 
 
 def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
-    # Fila 1 por columna 1, fila 1 por columna 2
-    # Fila 2 por columna 1, fila 2 por columna 2
     """
-    
+    Calcula la matriz resultante del producto entre dos vectores dados.
+
+    Args:
+        vector1 (tuple): El primer vector.
+        vector2 (tuple): El segundo vector.
+
+    Returns:
+        tuple: Una tupla anidada que representa la matriz resultante del producto entre los dos vectores.
     """
     matriz = []
 
     producto = 0
     producto2 = 0
 
+    # Fila 1 por columna 1, fila 1 por columna 2
     for i in range(len(vector1[0])):
         producto += vector1[0][i] * vector2[i][0]
     for j in range(len(vector1[0])):
@@ -59,6 +65,7 @@ def generar_matriz(vector1: tuple, vector2: tuple) -> tuple:
     producto = 0
     producto2 = 0
 
+    # Fila 2 por columna 1, fila 2 por columna 2
     for i in range(len(vector1[0])):
         producto += vector1[1][i] * vector2[i][0]
     for j in range(len(vector1[0])):
