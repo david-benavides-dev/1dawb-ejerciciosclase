@@ -9,4 +9,4 @@
 **Trabajos realizados:**
 
 1. Creación de un tablero:
-   - 
+   - .
